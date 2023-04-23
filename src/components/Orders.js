@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchOrders } from "../actions/fetchOrders";
 import Table from "./Table";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
-import orders from "../constants/Orders";
+import ordersData from "../mocks/orders.json";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,26 +14,27 @@ const Orders = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const ordersPerPage = 10;
   const dispatch = useDispatch();
-  const ordersState = useSelector((state) => state.order);
 
-  // dispatch the fetchOrders action on component mount
   useEffect(() => {
     dispatch(fetchOrders());
   }, [dispatch]);
 
-  // filter the orders based on the search text
   useEffect(() => {
     setFilteredOrders(
-      orders.filter((order) =>
+      ordersData.filter((order) =>
         Object.values(order)
           .join(" ")
           .toLowerCase()
           .includes(searchText.toLowerCase())
       )
     );
-  }, [orders, searchText]);
+  }, [searchText]);
 
-  // sort the orders based on the selected field and order
+  const handleSearch = (event) => {
+    setSearchText(event.target.value);
+    setCurrentPage(1);
+  };
+
   const handleSort = (field) => {
     if (sortBy === field) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -44,7 +45,6 @@ const Orders = () => {
     setCurrentPage(1);
   };
 
-  // calculate the pagination variables
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
   const currentOrders = filteredOrders
@@ -63,7 +63,7 @@ const Orders = () => {
   return (
     <div>
       <h2>Orders</h2>
-      <Filter searchText={searchText} setSearchText={setSearchText} />
+      <Filter searchText={searchText} handleSearch={handleSearch} />
       <Table
         orders={currentOrders}
         handleSort={handleSort}

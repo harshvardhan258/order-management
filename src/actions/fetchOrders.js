@@ -2,15 +2,14 @@ import {
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAILURE,
 } from "../constants/actionTypes";
-import orders from "../constants/Orders";
+import ordersData from "../mocks/orders.json";
 
 export const fetchOrders = () => {
-  console.log(orders);
   return (dispatch) => {
-    if (orders) {
+    if (ordersData) {
       dispatch({
         type: FETCH_ORDERS_SUCCESS,
-        payload: orders,
+        payload: ordersData,
       });
     } else {
       dispatch({

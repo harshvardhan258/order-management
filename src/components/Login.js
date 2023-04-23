@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../actions/login";
 import { isValidEmail } from "../utils/validation";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -19,8 +21,7 @@ const Login = () => {
     setError("");
   };
 
-  const handleSubmit = (event) => {
-    console.log("inside handleSubmit");
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!email) {
       setError("Email is required.");
@@ -35,6 +36,15 @@ const Login = () => {
       return;
     }
     dispatch(login(email, password, setError));
+    navigate("/orders");
+    // try {
+    //   const response = await dispatch(login(email, password, setError));
+    //   if (response.success) {
+    //     navigate("/orders");
+    //   }
+    // } catch (error) {
+    //   console.log("Not able to login");
+    // }
   };
 
   return (

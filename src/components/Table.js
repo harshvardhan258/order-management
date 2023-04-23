@@ -5,16 +5,16 @@ const Table = ({ orders, handleSort, sortBy, sortOrder }) => {
     <table className="table">
       <thead>
         <tr>
-          <th onClick={() => handleSort("order_id")}>
-            Order Id {sortBy === "order_id" && sortOrder === "asc" ? "▲" : "▼"}
+          <th onClick={() => handleSort("orderId")}>
+            Order Id {sortBy === "orderId" && sortOrder === "asc" ? "▲" : "▼"}
           </th>
-          <th onClick={() => handleSort("vendor_name")}>
+          <th onClick={() => handleSort("vendorName")}>
             Vendor name{" "}
-            {sortBy === "vendor_name" && sortOrder === "asc" ? "▲" : "▼"}
+            {sortBy === "vendorName" && sortOrder === "asc" ? "▲" : "▼"}
           </th>
-          <th onClick={() => handleSort("pick_up_date")}>
+          <th onClick={() => handleSort("pickupDate")}>
             Pick up date{" "}
-            {sortBy === "pick_up_date" && sortOrder === "asc" ? "▲" : "▼"}
+            {sortBy === "pickupDate" && sortOrder === "asc" ? "▲" : "▼"}
           </th>
           <th onClick={() => handleSort("status")}>
             Status {sortBy === "status" && sortOrder === "asc" ? "▲" : "▼"}
@@ -23,10 +23,10 @@ const Table = ({ orders, handleSort, sortBy, sortOrder }) => {
       </thead>
       <tbody>
         {orders.map((order) => (
-          <tr key={order.order_id}>
-            <td>{order.order_id}</td>
-            <td>{order.vendor_name}</td>
-            <td>{order.pick_up_date}</td>
+          <tr key={order.orderId}>
+            <td>{order.orderId}</td>
+            <td>{order.vendorName}</td>
+            <td>{order.pickupDate}</td>
             <td>{order.status}</td>
           </tr>
         ))}
