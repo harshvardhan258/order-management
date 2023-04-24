@@ -38,14 +38,6 @@ const Login = () => {
     }
     dispatch(login(email, password, setError));
     navigate("/orders");
-    // try {
-    //   const response = await dispatch(login(email, password, setError));
-    //   if (response.success) {
-    //     navigate("/orders");
-    //   }
-    // } catch (error) {
-    //   console.log("Not able to login");
-    // }
   };
 
   return (
@@ -55,24 +47,31 @@ const Login = () => {
         {error && <div className="alert">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email:</label>
+            <label htmlFor="email-input">Email:</label>
             <input
               type="email"
+              id="email-input"
               className="form-control"
               value={email}
               onChange={handleEmailChange}
             />
           </div>
           <div className="form-group">
-            <label>Password:</label>
+            <label htmlFor="password-input">Password:</label>
             <input
               type="password"
+              id="password-input"
               className="form-control"
               value={password}
               onChange={handlePasswordChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            data-testid="submit"
+            className="btn btn-primary"
+            id="submit"
+          >
             Login
           </button>
         </form>

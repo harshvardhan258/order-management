@@ -32,6 +32,7 @@ const Orders = () => {
   }, [searchText]);
 
   const handleSearch = (event) => {
+    console.log("event-->", event.target);
     setSearchText(event.target.value);
     setCurrentPage(1);
   };
