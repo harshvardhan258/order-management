@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../actions/login";
 import { isValidEmail } from "../utils/validation";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -48,32 +49,34 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <div className="alert alert-danger">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-      </form>
+    <div className="container">
+      <div className="form">
+        <h2>Login</h2>
+        {error && <div className="alert">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

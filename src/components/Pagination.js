@@ -22,7 +22,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "18px" }}>
       <button
         className={currentPage === 1 ? "disabled" : ""}
         onClick={() => handleClick(currentPage - 1)}

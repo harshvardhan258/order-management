@@ -5,6 +5,7 @@ import Table from "./Table";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
 import ordersData from "../mocks/orders.json";
+import "./Orders.css";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,8 +62,8 @@ const Orders = () => {
   const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
 
   return (
-    <div>
-      <h2>Orders</h2>
+    <div className="orders-container">
+      <h2 className="orders-title">Orders</h2>
       <Filter searchText={searchText} handleSearch={handleSearch} />
       <Table
         orders={currentOrders}

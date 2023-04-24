@@ -1,0 +1,47 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 1rem;
+}
+
+.table th {
+  cursor: pointer;
+}
+
+.table th.sort-asc::after {
+  content: " ▲";
+}
+
+.table th.sort-desc::after {
+  content: " ▼";
+}
+
+.table th:hover {
+  background-color: #ddd;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .table th,
+  .table td {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+}

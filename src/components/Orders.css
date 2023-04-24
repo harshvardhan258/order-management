@@ -1,0 +1,87 @@
+.orders-container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+.orders-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.orders-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.orders-table th {
+  cursor: pointer;
+  background-color: #f2f2f2;
+  color: #007bff;
+}
+
+.orders-table th.sort-asc::after {
+  content: " ▲";
+}
+
+.orders-table th.sort-desc::after {
+  content: " ▼";
+}
+
+.orders-table th:hover {
+  background-color: #ddd;
+}
+
+.orders-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.orders-table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.orders-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.orders-pagination button {
+  border: none;
+  background-color: #fff;
+  color: #007bff;
+  font-size: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .orders-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .orders-title {
+    font-size: 28px;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 10px;
+  }
+
+  .orders-pagination button {
+    font-size: 14px;
+    margin: 0 3px;
+  }
+}
